@@ -11,8 +11,7 @@ import java.util.Optional;
 public class DaoManufacturerImpl implements DaoManufacturer {
     @Override
     public Manufacturer create(Manufacturer item) {
-        Storage.manufacturerId++;
-        Storage.manufacturers.put(Storage.manufacturerId, item);
+        Storage.manufacturers.put(Storage.generateId(), item);
         return item;
     }
 
