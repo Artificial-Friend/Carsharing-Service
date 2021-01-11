@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Storage {
-    private static Long manufacturerId = 0L;
-
     public static final Map<Long, Manufacturer> manufacturers = new HashMap<>();
+
+    private static Long manufacturerId = 0L;
 
     public static Long generateId() {
         Long val = manufacturerId;
