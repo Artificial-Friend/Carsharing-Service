@@ -1,9 +1,10 @@
-package core.basesyntax.service;
+package core.basesyntax.service.implementations;
 
 import core.basesyntax.dao.DaoManufacturer;
 import core.basesyntax.lib.Inject;
 import core.basesyntax.lib.Service;
 import core.basesyntax.model.Manufacturer;
+import core.basesyntax.service.ManufacturerService;
 import java.util.List;
 
 @Service
@@ -27,8 +28,8 @@ public class ManufacturerServiceImpl implements ManufacturerService {
     }
 
     @Override
-    public Manufacturer update(Manufacturer manufacturer) {
-        return dao.update(manufacturer);
+    public Manufacturer update(Manufacturer item) {
+        return dao.update(item);
     }
 
     @Override

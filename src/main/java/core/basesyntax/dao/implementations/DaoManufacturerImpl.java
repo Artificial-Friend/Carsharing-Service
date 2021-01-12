@@ -1,5 +1,6 @@
-package core.basesyntax.dao;
+package core.basesyntax.dao.implementations;
 
+import core.basesyntax.dao.DaoManufacturer;
 import core.basesyntax.db.Storage;
 import core.basesyntax.lib.Dao;
 import core.basesyntax.model.Manufacturer;
@@ -11,7 +12,7 @@ import java.util.Optional;
 public class DaoManufacturerImpl implements DaoManufacturer {
     @Override
     public Manufacturer create(Manufacturer item) {
-        Storage.save(item);
+        Storage.saveManufacturer(item);
         return item;
     }
 
