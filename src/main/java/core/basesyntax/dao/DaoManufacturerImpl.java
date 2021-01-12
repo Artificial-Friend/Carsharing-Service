@@ -33,7 +33,7 @@ public class DaoManufacturerImpl implements DaoManufacturer {
 
     @Override
     public boolean delete(Long id) {
-        if(Storage.manufacturers. containsKey(id)) {
+        if (Storage.manufacturers. containsKey(id)) {
             Storage.manufacturers.remove(id);
             return true;
         }
