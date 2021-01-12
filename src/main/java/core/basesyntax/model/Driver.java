@@ -23,9 +23,8 @@ public class Driver {
         return name;
     }
 
-    public Driver setName(String name) {
+    public void setName(String name) {
         this.name = name;
-        return this;
     }
 
     public String getLicenseNumber() {

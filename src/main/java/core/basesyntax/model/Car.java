@@ -37,18 +37,16 @@ public class Car {
         return manufacturer;
     }
 
-    public Car setManufacturer(Manufacturer manufacturer) {
+    public void setManufacturer(Manufacturer manufacturer) {
         this.manufacturer = manufacturer;
-        return this;
     }
 
     public List<Driver> getDrivers() {
         return drivers;
     }
 
-    public Car setDrivers(List<Driver> drivers) {
+    public void setDrivers(List<Driver> drivers) {
         this.drivers = drivers;
-        return this;
     }
 
     @Override
