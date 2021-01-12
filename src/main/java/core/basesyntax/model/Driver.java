@@ -1,17 +1,16 @@
 package core.basesyntax.model;
 
 public class Driver {
-    private static long id;
+    private Long id;
     private String name;
     private String licenseNumber;
 
-    public Driver(long id, String name, String licenseNumber) {
-        id++;
+    public Driver(String name, String licenseNumber) {
         this.name = name;
         this.licenseNumber = licenseNumber;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

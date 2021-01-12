@@ -19,8 +19,9 @@ public class Main {
         manufacturerService.create(manufacturer3);
         manufacturerService.create(manufacturer4);
         manufacturerService.create(manufacturer5);
-        manufacturerService.get(3L);
+        manufacturerService.get(1L);
         manufacturerService.delete(2L);
+        manufacturer1.setCountry("nusa").setName("nvehicle");
         manufacturerService.update(manufacturer1);
         List<Manufacturer> all = manufacturerService.getAll();
         all.forEach(System.out::println);

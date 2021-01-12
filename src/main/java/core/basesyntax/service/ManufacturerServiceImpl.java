@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public class ManufacturerServiceImpl implements ManufacturerService {
     @Inject
-    DaoManufacturer dao;
+    private DaoManufacturer dao;
 
     @Override
     public Manufacturer create(Manufacturer item) {

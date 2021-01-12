@@ -3,7 +3,6 @@ package core.basesyntax.dao;
 import core.basesyntax.db.Storage;
 import core.basesyntax.lib.Dao;
 import core.basesyntax.model.Manufacturer;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,30 +10,28 @@ import java.util.Optional;
 public class DaoManufacturerImpl implements DaoManufacturer {
     @Override
     public Manufacturer create(Manufacturer item) {
-        Storage.manufacturers.put(Storage.generateId(), item);
+        Storage.save(item);
         return item;
     }
 
     @Override
     public Optional<Manufacturer> get(Long id) {
-        return Optional.of(Storage.manufacturers.get(id));
+        return Optional.ofNullable(Storage.get(id));
     }
 
     @Override
     public List<Manufacturer> getAll() {
-        return new ArrayList<>(Storage.manufacturers.values());
+        return Storage.getAll();
     }
 
     @Override
     public Manufacturer update(Manufacturer item) {
-        return create(item);
-        // what's the logic behind this?..
-        // I get new value so I can't match it with old, what's the point?
+        return Storage.replace(item);
     }
 
     @Override
     public boolean delete(Long id) {
-        Storage.manufacturers.remove(id);
-        return true;
+        Storage.remove(id);
+        return Storage.get(id) == null;
     }
 }
