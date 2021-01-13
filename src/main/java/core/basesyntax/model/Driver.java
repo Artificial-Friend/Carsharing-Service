@@ -23,9 +23,8 @@ public class Driver {
         return name;
     }
 
-    public Driver setName(String name) {
+    public void setName(String name) {
         this.name = name;
-        return this;
     }
 
     public String getLicenseNumber() {
@@ -35,5 +34,12 @@ public class Driver {
     public Driver setLicenseNumber(String licenseNumber) {
         this.licenseNumber = licenseNumber;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "Driver{" + "id=" + id
+                + ", name='" + name + '\''
+                + ", licenseNumber='" + licenseNumber + '\'' + '}';
     }
 }
