@@ -3,10 +3,6 @@ import core.basesyntax.model.Manufacturer;
 import core.basesyntax.service.CarService;
 import core.basesyntax.service.DriverService;
 import core.basesyntax.service.ManufacturerService;
-import core.basesyntax.util.ConnectionUtil;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 public class Main {
     private static final Injector injector = Injector.getInstance("core.basesyntax");
@@ -97,14 +93,13 @@ public class Main {
 
         //        allDrivers.forEach(System.out::println);
 
-//        String query = "TRUNCATE TABLE manufacturers RESTART IDENTITY ;";
-//        try (Connection connection = ConnectionUtil.getConnection()) {
-//            PreparedStatement statement = connection.prepareStatement(query);
-//            statement.executeQuery();
-//            statement.close();
-//        } catch (SQLException throwables) {
-//            throwables.printStackTrace();
-//        }
+        //        String query = "TRUNCATE TABLE manufacturers RESTART IDENTITY ;";
+        //        try (Connection connection = ConnectionUtil.getConnection()) {
+        //            PreparedStatement statement = connection.prepareStatement(query);
+        //            statement.executeQuery();
+        //            statement.close();
+        //        } catch (SQLException throwables) {
+        //            throwables.printStackTrace();
+        //        }
     }
 }
-

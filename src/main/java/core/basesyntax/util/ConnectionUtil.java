@@ -1,6 +1,5 @@
 package core.basesyntax.util;
 
-import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -9,15 +8,9 @@ import java.util.Properties;
 public class ConnectionUtil {
     static {
         try {
-            Class.forName("org.postgresql.Driver").getDeclaredConstructor().newInstance();
-        } catch (ClassNotFoundException | NoSuchMethodException e) {
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException("Can't find postgres driver " + e);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
         }
     }
 
