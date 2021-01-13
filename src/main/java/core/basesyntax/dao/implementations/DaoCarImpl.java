@@ -4,9 +4,11 @@ import core.basesyntax.dao.DaoCar;
 import core.basesyntax.db.Storage;
 import core.basesyntax.lib.Dao;
 import core.basesyntax.model.Car;
+import core.basesyntax.model.Driver;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Dao
 public class DaoCarImpl implements DaoCar {
@@ -39,5 +41,16 @@ public class DaoCarImpl implements DaoCar {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public List<Car> getAllByDriver(Long driverId) {
+        return getAll()
+                .stream()
+                .filter(car -> car.getDrivers()
+                        .stream()
+                        .map(Driver::getId)
+                        .collect(Collectors.toList()).contains(driverId))
+                .collect(Collectors.toList());
     }
 }
