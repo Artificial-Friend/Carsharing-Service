@@ -26,6 +26,7 @@ public class DaoJdbcManufacturerImpl implements DaoManufacturer {
                         = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, item.getName());
             statement.setString(2, item.getCountry());
+            statement.execute();
             ResultSet resultSet = statement.getGeneratedKeys();
             if (resultSet.next()) {
                 item.setId(resultSet.getObject("manufacturer_id", Long.class));
