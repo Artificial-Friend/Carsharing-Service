@@ -1,6 +1,7 @@
 package core.basesyntax.dao.jdbc;
 
 import core.basesyntax.dao.DaoManufacturer;
+import core.basesyntax.exceptions.DataProcessingException;
 import core.basesyntax.lib.Dao;
 import core.basesyntax.model.Manufacturer;
 import core.basesyntax.util.ConnectionUtil;
@@ -31,45 +32,46 @@ public class DaoJdbcManufacturerImpl implements DaoManufacturer {
             }
             statement.close();
         } catch (SQLException throwables) {
-            throw new RuntimeException("ERROR: create() method has failed " + throwables);
+            throw new DataProcessingException("ERROR: create() method has failed for "
+                    + item, throwables);
         }
         return item;
     }
 
     @Override
     public Optional<Manufacturer> get(Long id) {
-        String query = "SELECT * FROM manufacturers WHERE manufacturer_id = ?";
+        String query = "SELECT * FROM manufacturers WHERE manufacturer_id = ? AND "
+                + "manufacturer_deleted = false";
         Manufacturer manufacturer = null;
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
             statement.close();
-            if (resultSet.next() && !resultSet.getBoolean("manufacturer_deleted")) {
+            if (resultSet.next()) {
                 manufacturer = parseResultSet(resultSet);
             }
         } catch (SQLException throwables) {
-            throw new RuntimeException("ERROR: get() method has failed " + throwables);
+            throw new DataProcessingException("ERROR: get() method has failed for id="
+                    + id, throwables);
         }
         return Optional.ofNullable(manufacturer);
     }
 
     @Override
     public List<Manufacturer> getAll() {
-        String query = "SELECT * FROM manufacturers";
+        String query = "SELECT * FROM manufacturers WHERE manufacturers_deleted = false";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
             statement.close();
             List<Manufacturer> list = new ArrayList<>();
             while (resultSet.next()) {
-                if (!resultSet.getBoolean("manufacturer_deleted")) {
-                    list.add(parseResultSet(resultSet));
-                }
+                list.add(parseResultSet(resultSet));
             }
             return list;
         } catch (SQLException throwables) {
-            throw new RuntimeException("ERROR: getAll() method has failed " + throwables);
+            throw new DataProcessingException("ERROR: getAll() method has failed", throwables);
         }
     }
 
@@ -87,10 +89,11 @@ public class DaoJdbcManufacturerImpl implements DaoManufacturer {
                 statement.close();
                 return get(item.getId()).get();
             } catch (SQLException throwables) {
-                throw new RuntimeException("ERROR: update() method has failed " + throwables);
+                throw new DataProcessingException("ERROR: update() method has failed for "
+                        + item, throwables);
             }
         }
-        throw new RuntimeException("ERROR: No " + item + " object to update");
+        throw new RuntimeException("ERROR: Database contains no " + item + " object to update");
     }
 
     @Override
@@ -101,23 +104,23 @@ public class DaoJdbcManufacturerImpl implements DaoManufacturer {
             try (Connection connection = ConnectionUtil.getConnection()) {
                 PreparedStatement statement = connection.prepareStatement(query);
                 statement.setLong(1, id);
-                statement.executeUpdate();
+                int result = statement.executeUpdate();
                 statement.close();
-                return get(id).isEmpty();
+                return result > 0;
             } catch (SQLException throwables) {
-                throw new RuntimeException("ERROR: delete() method has failed " + throwables);
+                throw new DataProcessingException("ERROR: delete() method has failed for id="
+                        + id, throwables);
             }
         }
-        throw new RuntimeException("ERROR: Database contains no objects with id " + id);
+        throw new RuntimeException("ERROR: Database contains no objects with id=" + id);
     }
 
     private Manufacturer parseResultSet(ResultSet resultSet) throws SQLException {
-        long manufacturerId = resultSet.getLong("manufacturer_id");
-        String manufacturerName = resultSet.getString("manufacturer_name");
-        String manufacturerCountry = resultSet.getString("manufacturer_country");
+        long manufacturerId = resultSet.getObject("manufacturer_id", Long.class);
+        String manufacturerName = resultSet.getObject("manufacturer_name", String.class);
+        String manufacturerCountry = resultSet.getObject("manufacturer_country", String.class);
         Manufacturer manufacturer = new Manufacturer(manufacturerName, manufacturerCountry);
         manufacturer.setId(manufacturerId);
         return manufacturer;
-
     }
 }

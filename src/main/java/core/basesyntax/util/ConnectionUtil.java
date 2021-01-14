@@ -1,5 +1,6 @@
 package core.basesyntax.util;
 
+import core.basesyntax.exceptions.DataProcessingException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -22,7 +23,7 @@ public class ConnectionUtil {
         try {
             return DriverManager.getConnection(url, dbProperties);
         } catch (SQLException throwables) {
-            throw new RuntimeException("ERROR: Connection to DB failed! " + throwables);
+            throw new DataProcessingException("ERROR: Connection to DB failed!", throwables);
         }
     }
 }
