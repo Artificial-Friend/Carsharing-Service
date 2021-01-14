@@ -28,7 +28,7 @@ public class DaoJdbcManufacturerImpl implements DaoManufacturer {
             statement.setString(2, item.getCountry());
             ResultSet resultSet = statement.getGeneratedKeys();
             if (resultSet.next()) {
-                item.setId(resultSet.getObject(1, Long.class));
+                item.setId(resultSet.getObject("manufacturer_id", Long.class));
             }
         } catch (SQLException throwables) {
             throw new DataProcessingException("ERROR: create() method has failed for "
@@ -60,8 +60,8 @@ public class DaoJdbcManufacturerImpl implements DaoManufacturer {
     public List<Manufacturer> getAll() {
         String query = "SELECT * FROM manufacturers WHERE manufacturer_deleted = false";
         try (Connection connection = ConnectionUtil.getConnection();
-                PreparedStatement statement = connection.prepareStatement(query)) {
-            ResultSet resultSet = statement.executeQuery();
+                PreparedStatement statement = connection.prepareStatement(query);
+                ResultSet resultSet = statement.executeQuery()) {
             List<Manufacturer> list = new ArrayList<>();
             while (resultSet.next()) {
                 list.add(parseResultSet(resultSet));
@@ -97,8 +97,7 @@ public class DaoJdbcManufacturerImpl implements DaoManufacturer {
         try (Connection connection = ConnectionUtil.getConnection();
                 PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setLong(1, id);
-            int result = statement.executeUpdate();
-            return result > 0;
+            return statement.executeUpdate() > 0;
         } catch (SQLException throwables) {
             throw new DataProcessingException("ERROR: delete() method has failed for id="
                     + id, throwables);
