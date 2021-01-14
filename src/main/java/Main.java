@@ -27,79 +27,8 @@ public class Main {
         manufacturerService.getAll().forEach(System.out::println);
         Manufacturer changedManufacturer1 = new Manufacturer("blabla", "blabla");
         changedManufacturer1.setId(5L);
-
         manufacturerService.update(changedManufacturer1);
         manufacturerService.delete(1L);
         manufacturerService.get(1L);
-        //        manufacturerService.delete(2L);
-        //        manufacturerService.delete(3L);
-
-        //        manufacturerService.delete(4L);
-        //        manufacturerService.delete(5L);
-        //        manufacturerService.delete(6L);
-        //        manufacturerService.delete(7L);
-        //        manufacturerService.delete(8L);
-        //        manufacturerService.delete(9L);
-
-        //System.out.println(manufacturerService.get(1L));
-        // System.out.println(manufacturerService.get(1L));
-
-        //        Driver driver1 = new Driver("Bob", "abc");
-        //        Driver driver2 = new Driver("Alice", "def");
-        //        Driver driver3 = new Driver("John", "ghj");
-        //        Driver driver4 = new Driver("Bruce", "klm");
-        //        Driver driver5 = new Driver("Max", "nop");
-        //        driverService.create(driver1);
-        //        driverService.create(driver2);
-        //        driverService.create(driver3);
-        //        driverService.create(driver4);
-        //        driverService.create(driver5);
-        //
-
-        //        Car car1 = new Car("model1", manufacturer1);
-        //        Car car2 = new Car("model2", manufacturer2);
-        //        Car car3 = new Car("model3", manufacturer3);
-        //        Car car4 = new Car("model4", manufacturer4);
-        //        Car car5 = new Car("model5", manufacturer5);
-        //        carService.create(car1);
-        //        carService.create(car2);
-        //        carService.create(car3);
-        //        carService.create(car4);
-        //        carService.create(car5);
-        //
-        //
-        //        manufacturerService.delete(2L);
-        //        manufacturer1.setCountry("nusa").setName("nvehicle");
-        //        manufacturerService.update(manufacturer1);
-        //        List<Manufacturer> allManufacturers = manufacturerService.getAll();
-        //        allManufacturers.forEach(System.out::println);
-        //
-        //        carService.get(1L);
-        //        carService.delete(4L);
-        //        car1.setManufacturer(new Manufacturer("REDACTED", "BELARUS"));
-        //        carService.update(car1);
-        //        carService.addDriverToCar(new Driver("VIN DIESEL", "666"), car1);
-        //        carService.removeDriverFromCar(driver1, car1);
-        //        List<Car> allByDriver = carService.getAllByDriver(1L);
-        //        allByDriver.forEach(System.out::println);
-        //        List<Car> allCars = carService.getAll();
-        //        allCars.forEach(System.out::println);
-        //
-        //        driverService.get(1L);
-        //        driverService.delete(2L);
-        //        driver1.setName("REDACTED");
-        //        driverService.update(driver1);
-        //        List<Driver> allDrivers = driverService.getAll();
-
-        //        allDrivers.forEach(System.out::println);
-
-        //        String query = "TRUNCATE TABLE manufacturers RESTART IDENTITY ;";
-        //        try (Connection connection = ConnectionUtil.getConnection()) {
-        //            PreparedStatement statement = connection.prepareStatement(query);
-        //            statement.executeQuery();
-        //            statement.close();
-        //        } catch (SQLException throwables) {
-        //            throwables.printStackTrace();
-        //        }
     }
 }
