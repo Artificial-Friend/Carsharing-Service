@@ -59,8 +59,6 @@ public class Main {
         //manufacturerService.delete(1L);
         manufacturerService.get(1L);
 
-
-
         carService.get(1L);
         carService.delete(4L);
         car1.setManufacturer(manufacturer5);
