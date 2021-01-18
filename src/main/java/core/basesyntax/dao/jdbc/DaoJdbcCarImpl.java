@@ -40,8 +40,9 @@ public class DaoJdbcCarImpl implements DaoCar {
 
     @Override
     public Optional<Car> get(Long id) {
-        String query = "SELECT * FROM cars JOIN manufacturers m on cars.manufacturer_id = m.id "
-                + "WHERE m.deleted = false AND cars.deleted = false AND cars.id = ?";
+        String query = "SELECT cars.id, model, manufacturer_id, name, country FROM cars "
+                + "JOIN manufacturers m on cars.manufacturer_id = m.id "
+                + "WHERE cars.deleted = false AND cars.id = ?";
         try (Connection connection = ConnectionUtil.getConnection();
                 PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setLong(1, id);
@@ -59,8 +60,9 @@ public class DaoJdbcCarImpl implements DaoCar {
 
     @Override
     public List<Car> getAll() {
-        String query = "SELECT * FROM cars JOIN manufacturers m on cars.manufacturer_id = m.id "
-                + "WHERE m.deleted = false AND cars.deleted = false";
+        String query = "SELECT cars.id, model, manufacturer_id, name, country FROM cars "
+                + "JOIN manufacturers m on cars.manufacturer_id = m.id "
+                + "WHERE cars.deleted = false";
         try (Connection connection = ConnectionUtil.getConnection();
                 PreparedStatement statement = connection.prepareStatement(query)) {
             ResultSet resultSet = statement.executeQuery();
@@ -110,13 +112,13 @@ public class DaoJdbcCarImpl implements DaoCar {
 
     @Override
     public List<Car> getAllByDriver(Long driverId) {
-        String query = "SELECT cars.id, drivers.id, cars.model, cars.manufacturer_id, "
-                + "drivers.deleted FROM cars "
+        String query = "SELECT cars.id, cars.model, cars.manufacturer_id, "
+                + "m.name, m.country, drivers.deleted FROM cars "
                 + "INNER JOIN cars_drivers cs ON cs.car_id = cars.id "
                 + "INNER JOIN drivers ON cs.driver_id = drivers.id "
                 + "JOIN manufacturers m on cars.manufacturer_id = m.id "
-                + "WHERE m.deleted = false AND cars.deleted = false "
-                + "AND drivers.id = ? ORDER BY cars.id;";
+                + "WHERE cars.deleted = false AND drivers.deleted = false AND "
+                + "drivers.id = ? ORDER BY cars.id;";
         try (Connection connection = ConnectionUtil.getConnection();
                 PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setLong(1, driverId);
@@ -150,13 +152,13 @@ public class DaoJdbcCarImpl implements DaoCar {
     private void addDriversIntoCar(Long id, List<Driver> drivers, Connection connection)
             throws SQLException {
         String query = "INSERT INTO cars_drivers (car_id, driver_id) VALUES (?, ?)";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setLong(1, id);
         for (Driver driver : drivers) {
-            PreparedStatement statement = connection.prepareStatement(query);
-            statement.setLong(1, id);
             statement.setLong(2, driver.getId());
             statement.execute();
-            statement.close();
         }
+        statement.close();
     }
 
     private void deleteDriversFromCar(Long id, Connection connection) throws SQLException {

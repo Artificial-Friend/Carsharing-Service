@@ -59,13 +59,19 @@ public class Main {
         //manufacturerService.delete(1L);
         manufacturerService.get(1L);
 
+
+
         carService.get(1L);
         carService.delete(4L);
         car1.setManufacturer(manufacturer5);
         carService.update(car1);
-        carService.addDriverToCar(maximilian, car1);
+        carService.addDriverToCar(driver1, car1);
+        carService.addDriverToCar(driver1, car2);
+        carService.addDriverToCar(driver1, car3);
+        carService.addDriverToCar(driver1, car4);
         carService.removeDriverFromCar(driver1, car1);
-        List<Car> allByDriver = carService.getAllByDriver(1L);
+        System.out.println("\n\n\n");
+        List<Car> allByDriver = carService.getAllByDriver(13L);
         allByDriver.forEach(System.out::println);
         List<Car> allCars = carService.getAll();
         allCars.forEach(System.out::println);
