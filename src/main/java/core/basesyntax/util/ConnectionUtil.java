@@ -23,7 +23,8 @@ public class ConnectionUtil {
         try {
             return DriverManager.getConnection(url, dbProperties);
         } catch (SQLException throwables) {
-            throw new DataProcessingException("ERROR: Connection to DB failed!", throwables);
+            throw new DataProcessingException("ERROR: Connection to DB has been failed!",
+                    throwables);
         }
     }
 }
