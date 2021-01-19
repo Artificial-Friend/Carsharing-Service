@@ -2,10 +2,10 @@ package core.basesyntax.service;
 
 import java.util.List;
 
-public interface GenericService<T> {
+public interface GenericService<T, I> {
     T create(T item);
 
-    T get(Long id);
+    T get(I id);
 
     List<T> getAll();
 
