@@ -135,10 +135,11 @@ public class DaoJdbcCarImpl implements DaoCar {
     }
 
     private List<Driver> getDrivers(Long id, Connection connection) throws SQLException {
-        String query = "SELECT cars.id, drivers.id, drivers.name, drivers.license_number, "
-                + "drivers.deleted FROM cars INNER JOIN cars_drivers cs ON cs.car_id = cars.id "
-                + "    INNER JOIN drivers ON cs.driver_id = drivers.id "
-                + "WHERE cars.id = ? AND drivers.deleted = false ORDER BY drivers.id;";
+        String query = "SELECT cars.id, d.id, d.name, d.license_number, "
+                + "d.deleted FROM cars INNER JOIN cars_drivers cs ON cs.car_id = cars.id "
+                + "    INNER JOIN drivers d ON cs.driver_id = d.id "
+                + "WHERE cars.id = ? AND cars.deleted = false AND d.deleted = false "
+                + "ORDER BY d.id;";
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setLong(1, id);
         ResultSet resultSet = statement.executeQuery();

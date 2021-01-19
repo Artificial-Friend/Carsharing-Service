@@ -38,7 +38,8 @@ public class DaoJdbcDriverImpl implements DaoDriver {
 
     @Override
     public Optional<Driver> get(Long id) {
-        String query = "SELECT * FROM drivers WHERE id = ? AND deleted = false";
+        String query = "SELECT id, name, license_number FROM drivers "
+                + "WHERE id = ? AND deleted = false";
         try (Connection connection = ConnectionUtil.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setLong(1, id);
@@ -54,7 +55,7 @@ public class DaoJdbcDriverImpl implements DaoDriver {
 
     @Override
     public List<Driver> getAll() {
-        String query = "SELECT * FROM drivers WHERE deleted = false";
+        String query = "SELECT id, name, license_number FROM drivers WHERE deleted = false";
         try (Connection connection = ConnectionUtil.getConnection();
                 PreparedStatement statement = connection.prepareStatement(query)) {
             ResultSet resultSet = statement.executeQuery();
