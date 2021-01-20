@@ -4,13 +4,15 @@
 <head>
     <title>All manufacturers</title>
     <style>
-        table {text-align: center;}
+        table.center {
+            margin-left: auto;
+            margin-right: auto;
+        }
     </style>
 </head>
 <body>
 <h1>All manufacturers</h1>
-
-<table border="1">
+<table border="1" class="center">
     <tr>
         <th>ID</th>
         <th>Name</th>

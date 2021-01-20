@@ -72,4 +72,14 @@
         <servlet-name>allManufacturers</servlet-name>
         <url-pattern>/manufacturers</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>allCars</servlet-name>
+        <servlet-class>core.basesyntax.controller.DisplayAllCarsController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>allCars</servlet-name>
+        <url-pattern>/cars</url-pattern>
+    </servlet-mapping>
 </web-app>
