@@ -15,7 +15,7 @@
 
     <servlet>
         <servlet-name>allDrivers</servlet-name>
-        <servlet-class>core.basesyntax.controller.DisplayAllDriversController</servlet-class>
+        <servlet-class>core.basesyntax.controller.driver.DisplayAllDriversController</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -25,7 +25,7 @@
 
     <servlet>
         <servlet-name>createDriver</servlet-name>
-        <servlet-class>core.basesyntax.controller.CreateDriverController</servlet-class>
+        <servlet-class>core.basesyntax.controller.driver.CreateDriverController</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -35,7 +35,7 @@
 
     <servlet>
         <servlet-name>createCar</servlet-name>
-        <servlet-class>core.basesyntax.controller.CreateCarController</servlet-class>
+        <servlet-class>core.basesyntax.controller.car.CreateCarController</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -45,7 +45,7 @@
 
     <servlet>
         <servlet-name>createManufacturer</servlet-name>
-        <servlet-class>core.basesyntax.controller.CreateManufacturerController</servlet-class>
+        <servlet-class>core.basesyntax.controller.manufacturer.CreateManufacturerController</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -55,7 +55,7 @@
 
     <servlet>
         <servlet-name>AddDriverToCar</servlet-name>
-        <servlet-class>core.basesyntax.controller.AddDriverToCarController</servlet-class>
+        <servlet-class>core.basesyntax.controller.car.AddDriverToCarController</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -65,7 +65,7 @@
 
     <servlet>
         <servlet-name>allManufacturers</servlet-name>
-        <servlet-class>core.basesyntax.controller.DisplayAllManufacturersController</servlet-class>
+        <servlet-class>core.basesyntax.controller.manufacturer.DisplayAllManufacturersController</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -75,7 +75,7 @@
 
     <servlet>
         <servlet-name>allCars</servlet-name>
-        <servlet-class>core.basesyntax.controller.DisplayAllCarsController</servlet-class>
+        <servlet-class>core.basesyntax.controller.car.DisplayAllCarsController</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -95,7 +95,7 @@
 
     <servlet>
         <servlet-name>deleteCar</servlet-name>
-        <servlet-class>core.basesyntax.controller.DeleteCarController</servlet-class>
+        <servlet-class>core.basesyntax.controller.car.DeleteCarController</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -105,7 +105,7 @@
 
     <servlet>
         <servlet-name>driversByCar</servlet-name>
-        <servlet-class>core.basesyntax.controller.DisplayAllDriversFromCarController</servlet-class>
+        <servlet-class>core.basesyntax.controller.car.DisplayAllDriversFromCarController</servlet-class>
     </servlet>
 
     <servlet-mapping>
