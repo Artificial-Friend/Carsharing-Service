@@ -4,11 +4,10 @@
     <title>Adding Driver to Car</title>
 </head>
 <body>
-<h1>Provide your name and license number then car id</h1>
+<h1>Provide driver and car id's</h1>
 
 <form method="post" action="${pageContext.request.contextPath}/cars/drivers/add">
-    Driver's name: <input type="text" name="name">
-    Driver's license number: <input type="text" name="licenseNumber">
+    Driver's id: <input type="number" name="driver_id">
     <br>
     Car's id: <input type="number" name="car_id">
     <button type="submit">add</button>
