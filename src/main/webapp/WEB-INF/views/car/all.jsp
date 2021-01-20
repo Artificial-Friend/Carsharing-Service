@@ -8,11 +8,13 @@
             margin-left: auto;
             margin-right: auto;
         }
+        h1 {text-align: center;}
+        p {text-align: center;}
     </style>
 </head>
 <body>
 <h1>All cars</h1>
-
+<p><a href="${pageContext.request.contextPath}/">Return to the main page</a></p>
 <table border="1" class="center">
     <tr>
         <th>ID</th>
