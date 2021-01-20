@@ -15,6 +15,7 @@
 <body>
 <h1>All drivers</h1>
 <p><a href="${pageContext.request.contextPath}/">Return to the main page</a></p>
+<p><a href="${pageContext.request.contextPath}/drivers/add">Add driver</a></p>
 <table border="1" class="center">
     <tr>
         <th>ID</th>

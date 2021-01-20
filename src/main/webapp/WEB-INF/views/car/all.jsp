@@ -15,6 +15,7 @@
 <body>
 <h1>All cars</h1>
 <p><a href="${pageContext.request.contextPath}/">Return to the main page</a></p>
+<p><a href="${pageContext.request.contextPath}/cars/drivers/add">Add driver to car by id</a></p>
 <table border="1" class="center">
     <tr>
         <th>ID</th>
