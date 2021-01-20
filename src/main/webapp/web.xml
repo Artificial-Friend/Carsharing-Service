@@ -102,4 +102,14 @@
         <servlet-name>deleteCar</servlet-name>
         <url-pattern>/cars/delete</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>driversByCar</servlet-name>
+        <servlet-class>core.basesyntax.controller.DisplayAllDriversFromCarController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>driversByCar</servlet-name>
+        <url-pattern>/cars/drivers</url-pattern>
+    </servlet-mapping>
 </web-app>

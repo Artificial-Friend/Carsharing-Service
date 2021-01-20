@@ -55,6 +55,10 @@ public class InjectDataController extends HttpServlet {
         driverService.create(driver3);
         driverService.create(driver4);
         driverService.create(driver5);
+        carService.addDriverToCar(driver1, car1);
+        carService.addDriverToCar(driver2, car1);
+        carService.addDriverToCar(driver3, car1);
+        carService.addDriverToCar(driver1, car2);
         req.getRequestDispatcher("WEB-INF/views/injectData.jsp").forward(req, resp);
     }
 }

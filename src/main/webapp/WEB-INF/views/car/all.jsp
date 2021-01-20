@@ -34,7 +34,7 @@
                 <c:out value="${car.manufacturer}"/>
             </td>
             <td>
-                <c:out value="${car.drivers}"/>
+                <a href="${pageContext.request.contextPath}/cars/drivers?id=${car.id}">Show</a>
             </td>
             <td>
                 <a href="${pageContext.request.contextPath}/cars/delete?id=${car.id}">Delete</a>
