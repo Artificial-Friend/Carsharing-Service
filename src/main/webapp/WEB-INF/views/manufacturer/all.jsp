@@ -32,6 +32,9 @@
             <td>
                 <c:out value="${manufacturer.country}"/>
             </td>
+            <td>
+                <a href="${pageContext.request.contextPath}/manufacturers/delete?id=${manufacturer.id}">Delete</a>
+            </td>
         </tr>
     </c:forEach>
 </table>

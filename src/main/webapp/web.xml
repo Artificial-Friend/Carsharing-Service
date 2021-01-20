@@ -112,4 +112,24 @@
         <servlet-name>driversByCar</servlet-name>
         <url-pattern>/cars/drivers</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>deleteDriver</servlet-name>
+        <servlet-class>core.basesyntax.controller.driver.DeleteDriverController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>deleteDriver</servlet-name>
+        <url-pattern>/drivers/delete</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>deleteManufacturer</servlet-name>
+        <servlet-class>core.basesyntax.controller.manufacturer.DeleteManufacturerController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>deleteManufacturer</servlet-name>
+        <url-pattern>/manufacturers/delete</url-pattern>
+    </servlet-mapping>
 </web-app>
