@@ -55,7 +55,8 @@ public class DaoJdbcDriverImpl implements DaoDriver {
 
     @Override
     public List<Driver> getAll() {
-        String query = "SELECT id, name, license_number FROM drivers WHERE deleted = false";
+        String query = "SELECT id, name, license_number FROM drivers WHERE deleted = false "
+                + "ORDER BY id";
         try (Connection connection = ConnectionUtil.getConnection();
                 PreparedStatement statement = connection.prepareStatement(query)) {
             ResultSet resultSet = statement.executeQuery();
