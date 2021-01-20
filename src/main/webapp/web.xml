@@ -42,4 +42,14 @@
         <servlet-name>createCar</servlet-name>
         <url-pattern>/cars/add</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>createManufacturer</servlet-name>
+        <servlet-class>core.basesyntax.controller.CreateManufacturerController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>createManufacturer</servlet-name>
+        <url-pattern>/manufacturers/add</url-pattern>
+    </servlet-mapping>
 </web-app>
