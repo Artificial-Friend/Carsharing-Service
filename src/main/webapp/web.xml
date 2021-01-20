@@ -32,4 +32,14 @@
         <servlet-name>createDriver</servlet-name>
         <url-pattern>/drivers/add</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>createCar</servlet-name>
+        <servlet-class>core.basesyntax.controller.CreateCarController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>createCar</servlet-name>
+        <url-pattern>/cars/add</url-pattern>
+    </servlet-mapping>
 </web-app>
