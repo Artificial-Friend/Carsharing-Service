@@ -5,11 +5,11 @@ import core.basesyntax.model.Car;
 import core.basesyntax.model.Manufacturer;
 import core.basesyntax.service.CarService;
 import core.basesyntax.service.ManufacturerService;
+import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 public class CreateCarController extends HttpServlet {
     private static final Injector injector = Injector.getInstance("core.basesyntax");
@@ -17,6 +17,7 @@ public class CreateCarController extends HttpServlet {
             = (CarService) injector.getInstance(CarService.class);
     private final ManufacturerService manufacturerService
             = (ManufacturerService) injector.getInstance(ManufacturerService.class);
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {

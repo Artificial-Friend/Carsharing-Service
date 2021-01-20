@@ -2,11 +2,11 @@ package core.basesyntax.controller.car;
 
 import core.basesyntax.lib.Injector;
 import core.basesyntax.service.CarService;
+import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 public class DeleteCarController extends HttpServlet {
     private static final Injector injector = Injector.getInstance("core.basesyntax");
