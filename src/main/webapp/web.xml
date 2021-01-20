@@ -62,4 +62,14 @@
         <servlet-name>AddDriverToCar</servlet-name>
         <url-pattern>/cars/drivers/add</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>allManufacturers</servlet-name>
+        <servlet-class>core.basesyntax.controller.DisplayAllManufacturersController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>allManufacturers</servlet-name>
+        <url-pattern>/manufacturers</url-pattern>
+    </servlet-mapping>
 </web-app>

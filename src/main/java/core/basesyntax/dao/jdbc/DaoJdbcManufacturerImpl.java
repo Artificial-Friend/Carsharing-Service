@@ -40,7 +40,7 @@ public class DaoJdbcManufacturerImpl implements DaoManufacturer {
 
     @Override
     public Optional<Manufacturer> get(Long id) {
-        String query = "SELECT * FROM manufacturers WHERE id = ? AND "
+        String query = "SELECT id, name, country FROM manufacturers WHERE id = ? AND "
                 + "deleted = false";
         try (Connection connection = ConnectionUtil.getConnection();
                 PreparedStatement statement = connection.prepareStatement(query)) {
@@ -58,7 +58,8 @@ public class DaoJdbcManufacturerImpl implements DaoManufacturer {
 
     @Override
     public List<Manufacturer> getAll() {
-        String query = "SELECT * FROM manufacturers WHERE deleted = false";
+        String query = "SELECT id, name, country FROM manufacturers WHERE deleted = false "
+                + "ORDER BY id";
         try (Connection connection = ConnectionUtil.getConnection();
                 PreparedStatement statement = connection.prepareStatement(query);
                 ResultSet resultSet = statement.executeQuery()) {

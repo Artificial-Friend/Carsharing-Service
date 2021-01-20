@@ -1,8 +1,8 @@
 package core.basesyntax.controller;
 
 import core.basesyntax.lib.Injector;
-import core.basesyntax.model.Driver;
-import core.basesyntax.service.DriverService;
+import core.basesyntax.model.Manufacturer;
+import core.basesyntax.service.ManufacturerService;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -10,15 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-public class DisplayAllDriversController extends HttpServlet {
+public class DisplayAllManufacturersController extends HttpServlet {
     private static final Injector injector = Injector.getInstance("core.basesyntax");
-    private final DriverService driverService
-            = (DriverService) injector.getInstance(DriverService.class);
+    private final ManufacturerService manufacturerService
+            = (ManufacturerService) injector.getInstance(ManufacturerService.class);
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        List<Driver> allDrivers = driverService.getAll();
-        req.setAttribute("drivers", allDrivers);
-        req.getRequestDispatcher("/WEB-INF/views/driver/all.jsp").forward(req, resp);
+        List<Manufacturer> manufacturers = manufacturerService.getAll();
+        req.setAttribute("manufacturers", manufacturers);
+        req.getRequestDispatcher("WEB-INF/views/manufacturer/all.jsp").forward(req, resp);
     }
 }
