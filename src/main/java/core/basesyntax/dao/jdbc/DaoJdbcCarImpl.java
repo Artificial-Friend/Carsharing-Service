@@ -1,7 +1,7 @@
 package core.basesyntax.dao.jdbc;
 
 import core.basesyntax.dao.DaoCar;
-import core.basesyntax.exceptions.DataProcessingException;
+import core.basesyntax.exception.DataProcessingException;
 import core.basesyntax.lib.Dao;
 import core.basesyntax.model.Car;
 import core.basesyntax.model.Driver;
@@ -135,7 +135,7 @@ public class DaoJdbcCarImpl implements DaoCar {
     }
 
     private List<Driver> getDrivers(Long id, Connection connection) throws SQLException {
-        String query = "SELECT cars.id, d.id, d.name, d.license_number, "
+        String query = "SELECT d.id, d.name, d.license_number, "
                 + "d.deleted FROM cars INNER JOIN cars_drivers cs ON cs.car_id = cars.id "
                 + "    INNER JOIN drivers d ON cs.driver_id = d.id "
                 + "WHERE cars.id = ? AND cars.deleted = false AND d.deleted = false "
