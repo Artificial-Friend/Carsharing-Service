@@ -7,8 +7,10 @@
     <h1>Provide company's name and country</h1>
 
 <form method="post" action="${pageContext.request.contextPath}/manufacturers/add">
-    Company's name: <input type="text" name="name">
-    Country: <input type="text" name="country">
+    Company's name: <input required type="text" name="name">
+    <br>
+    Country: <input required type="text" name="country">
+    <br>
     <button type="submit">add</button>
 </form>
 </body>

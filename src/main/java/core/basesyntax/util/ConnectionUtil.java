@@ -1,6 +1,6 @@
 package core.basesyntax.util;
 
-import core.basesyntax.exceptions.DataProcessingException;
+import core.basesyntax.exception.DataProcessingException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;

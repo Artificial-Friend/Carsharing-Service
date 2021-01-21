@@ -19,8 +19,9 @@
 <table border="1" class="center">
     <tr>
         <th>ID</th>
-        <th>name</th>
-        <th>licenseNumber</th>
+        <th>Name</th>
+        <th>LicenseNumber</th>
+        <th>Delete</th>
     </tr>
     <c:forEach var="driver" items="${drivers}">
         <tr>

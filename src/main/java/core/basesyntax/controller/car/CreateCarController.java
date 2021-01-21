@@ -2,7 +2,6 @@ package core.basesyntax.controller.car;
 
 import core.basesyntax.lib.Injector;
 import core.basesyntax.model.Car;
-import core.basesyntax.model.Manufacturer;
 import core.basesyntax.service.CarService;
 import core.basesyntax.service.ManufacturerService;
 import java.io.IOException;
@@ -25,19 +24,11 @@ public class CreateCarController extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+            throws IOException {
         String model = req.getParameter("model");
-        String manufacturerName = req.getParameter("manufacturer");
-        Manufacturer manufacturer = null;
-        for (Manufacturer mf : manufacturerService.getAll()) {
-            if (mf.getName().equals(manufacturerName)) {
-                manufacturer = mf;
-            }
-        }
-        if (manufacturer == null) {
-            manufacturer = manufacturerService.create(new Manufacturer(manufacturerName,
-                    "front-end now can redirect user to manufacturerService.update() method"));
-        }
-        carService.create(new Car(model, manufacturer));
+        Long manufacturerId = Long.parseLong(req.getParameter("manufacturer_id"));
+        carService.create(new Car(model, manufacturerService.get(manufacturerId)));
+        resp.sendRedirect(req.getContextPath() + "/");
     }
 }

@@ -7,8 +7,10 @@
 <h1>Provide your name and license number</h1>
 
 <form method="post" action="${pageContext.request.contextPath}/cars/add">
-    Car's name: <input type="text" name="model">
-    Car'm manufacturer: <input type="number" name="manufacturer">
+    Car's name: <input required type="text" name="model">
+    <br>
+    Car's manufacturer id: <input required type="number" name="manufacturer_id">
+    <br>
     <button type="submit">add</button>
 </form>
 </body>

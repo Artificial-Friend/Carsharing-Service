@@ -7,9 +7,10 @@
 <h1>Provide driver and car id's</h1>
 
 <form method="post" action="${pageContext.request.contextPath}/cars/drivers/add">
-    Driver's id: <input type="number" name="driver_id">
+    Driver's id: <input required type="number" name="driver_id">
     <br>
-    Car's id: <input type="number" name="car_id">
+    Car's id: <input required type="number" name="car_id">
+    <br>
     <button type="submit">add</button>
 </form>
 </body>

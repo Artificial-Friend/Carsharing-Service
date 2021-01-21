@@ -15,13 +15,15 @@
 <body>
 <h1>All cars</h1>
 <p><a href="${pageContext.request.contextPath}/">Return to the main page</a></p>
+<p><a href="${pageContext.request.contextPath}/cars/add">Add car</a></p>
 <p><a href="${pageContext.request.contextPath}/cars/drivers/add">Add driver to car by id</a></p>
 <table border="1" class="center">
     <tr>
         <th>ID</th>
-        <th>madel</th>
-        <th>manufacturer_id</th>
-        <th>drivers</th>
+        <th>Madel</th>
+        <th>Manufacturer</th>
+        <th>Drivers</th>
+        <th>Delete</th>
     </tr>
     <c:forEach var="car" items="${cars}">
         <tr>
@@ -32,7 +34,7 @@
                 <c:out value="${car.model}"/>
             </td>
             <td>
-                <c:out value="${car.manufacturer}"/>
+                <c:out value="${car.manufacturer.name}"/>
             </td>
             <td>
                 <a href="${pageContext.request.contextPath}/cars/drivers?id=${car.id}">Show</a>
