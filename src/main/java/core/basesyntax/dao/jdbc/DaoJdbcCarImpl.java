@@ -62,7 +62,7 @@ public class DaoJdbcCarImpl implements DaoCar {
     public List<Car> getAll() {
         String query = "SELECT cars.id, model, manufacturer_id, name, country FROM cars "
                 + "JOIN manufacturers m on cars.manufacturer_id = m.id "
-                + "WHERE cars.deleted = false";
+                + "WHERE cars.deleted = false ORDER BY cars.id";
         try (Connection connection = ConnectionUtil.getConnection();
                 PreparedStatement statement = connection.prepareStatement(query)) {
             ResultSet resultSet = statement.executeQuery();
@@ -135,8 +135,8 @@ public class DaoJdbcCarImpl implements DaoCar {
     }
 
     private List<Driver> getDrivers(Long id, Connection connection) throws SQLException {
-        String query = "SELECT d.id, d.name, d.license_number, "
-                + "d.deleted FROM cars INNER JOIN cars_drivers cs ON cs.car_id = cars.id "
+        String query = "SELECT d.id, d.name, d.license_number, d.login, d.password "
+                + "FROM cars INNER JOIN cars_drivers cs ON cs.car_id = cars.id "
                 + "    INNER JOIN drivers d ON cs.driver_id = d.id "
                 + "WHERE cars.id = ? AND cars.deleted = false AND d.deleted = false "
                 + "ORDER BY d.id;";

@@ -10,8 +10,10 @@ public class DaoUtils {
     public static Driver parseDriver(ResultSet resultSet) throws SQLException {
         Long id = resultSet.getObject("id", Long.class);
         String name = resultSet.getObject("name", String.class);
+        String login = resultSet.getObject("login", String.class);
+        String password = resultSet.getObject("password", String.class);
         String licenseNumber = resultSet.getObject("license_number", String.class);
-        Driver driver = new Driver(name, licenseNumber);
+        Driver driver = new Driver(name, licenseNumber, login, password);
         driver.setId(id);
         return driver;
     }

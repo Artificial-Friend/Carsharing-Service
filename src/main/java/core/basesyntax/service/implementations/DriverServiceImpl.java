@@ -6,7 +6,9 @@ import core.basesyntax.lib.Service;
 import core.basesyntax.model.Driver;
 import core.basesyntax.service.DriverService;
 import java.util.List;
+import java.util.Optional;
 
+@SuppressWarnings("unused")
 @Service
 public class DriverServiceImpl implements DriverService {
     @Inject
@@ -35,5 +37,10 @@ public class DriverServiceImpl implements DriverService {
     @Override
     public boolean delete(Long id) {
         return dao.delete(id);
+    }
+
+    @Override
+    public Optional<Driver> findByLogin(String login) {
+        return dao.findByLogin(login);
     }
 }

@@ -19,7 +19,7 @@ public class Car {
         return id;
     }
 
-    public Car setId(long id) {
+    public Car setId(Long id) {
         this.id = id;
         return this;
     }

@@ -8,6 +8,7 @@ import core.basesyntax.model.Driver;
 import core.basesyntax.service.CarService;
 import java.util.List;
 
+@SuppressWarnings("unused")
 @Service
 public class CarServiceImpl implements CarService {
     @Inject

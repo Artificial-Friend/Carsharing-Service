@@ -8,9 +8,7 @@ SET check_function_bodies = false;
 SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
-
 SET default_tablespace = '';
-
 SET default_table_access_method = heap;
 
 CREATE TABLE public.cars (
@@ -44,8 +42,11 @@ CREATE TABLE public.drivers (
                                 id bigint NOT NULL,
                                 name character varying,
                                 license_number character varying,
-                                deleted boolean DEFAULT false NOT NULL
+                                deleted boolean DEFAULT false NOT NULL,
+                                login character varying,
+                                password character varying
 );
+
 
 ALTER TABLE public.drivers OWNER TO postgres;
 
@@ -86,6 +87,24 @@ ALTER TABLE ONLY public.drivers ALTER COLUMN id SET DEFAULT nextval('public.driv
 
 ALTER TABLE ONLY public.manufacturers ALTER COLUMN id SET DEFAULT nextval('public.manufacturers_manufacturer_id_seq'::regclass);
 
+COPY public.cars (id, model, manufacturer_id, deleted) FROM stdin;
+\.
+
+COPY public.cars_drivers (driver_id, car_id) FROM stdin;
+\.
+
+COPY public.drivers (id, name, license_number, deleted, login, password) FROM stdin;
+\.
+
+COPY public.manufacturers (id, name, country, deleted) FROM stdin;
+\.
+
+SELECT pg_catalog.setval('public.cars_car_id_seq', 1, false);
+
+SELECT pg_catalog.setval('public.drivers_id_seq', 1, false);
+
+SELECT pg_catalog.setval('public.manufacturers_manufacturer_id_seq', 1, false);
+
 ALTER TABLE ONLY public.cars
     ADD CONSTRAINT cars_pkey PRIMARY KEY (id);
 
@@ -94,6 +113,8 @@ ALTER TABLE ONLY public.drivers
 
 ALTER TABLE ONLY public.manufacturers
     ADD CONSTRAINT manufacturers_pkey PRIMARY KEY (id);
+
+CREATE UNIQUE INDEX drivers_login_uindex ON public.drivers USING btree (login);
 
 ALTER TABLE ONLY public.cars
     ADD CONSTRAINT car_manufacturer_fk FOREIGN KEY (manufacturer_id) REFERENCES public.manufacturers(id);
