@@ -87,18 +87,6 @@ ALTER TABLE ONLY public.drivers ALTER COLUMN id SET DEFAULT nextval('public.driv
 
 ALTER TABLE ONLY public.manufacturers ALTER COLUMN id SET DEFAULT nextval('public.manufacturers_manufacturer_id_seq'::regclass);
 
-COPY public.cars (id, model, manufacturer_id, deleted) FROM stdin;
-\.
-
-COPY public.cars_drivers (driver_id, car_id) FROM stdin;
-\.
-
-COPY public.drivers (id, name, license_number, deleted, login, password) FROM stdin;
-\.
-
-COPY public.manufacturers (id, name, country, deleted) FROM stdin;
-\.
-
 SELECT pg_catalog.setval('public.cars_car_id_seq', 1, false);
 
 SELECT pg_catalog.setval('public.drivers_id_seq', 1, false);
