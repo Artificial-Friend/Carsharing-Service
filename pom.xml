@@ -35,6 +35,11 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
+        <dependency>
+            <groupId>com.heroku</groupId>
+            <artifactId>webapp-runner</artifactId>
+            <version>9.0.41.0</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -106,7 +111,7 @@
                 <!--                    <artifactId>heroku-maven-plugin</artifactId>-->
                 <!--                    <version>3.0.4</version>-->
                 <!--                </plugin>-->
-                <!--                web: java $JAVA_OPTS -jar target/dependency/webapp-runner.jar &#45;&#45;port $PORT target/*.war-->
+
             </plugins>
         </pluginManagement>
     </build>
