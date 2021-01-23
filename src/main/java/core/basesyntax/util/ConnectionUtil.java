@@ -17,9 +17,11 @@ public class ConnectionUtil {
 
     public static Connection getConnection() {
         Properties dbProperties = new Properties();
-        dbProperties.put("user", "postgres");
-        dbProperties.put("password", "25832");
-        String url = "jdbc:postgresql://localhost:5432/db";
+        dbProperties.put("user", "yedzzkerctojhf");
+        dbProperties.put("password",
+                "56629467b6bf25aa8f82dd3711c2a52c20f67665c46af89effaf2f77a260c7d2");
+        String url = "jdbc:postgresql://ec2-34-251-118-151.eu-west-1.compute.amazonaws.com:5432"
+                + "/dbj8lruo1jle2q";
         try {
             return DriverManager.getConnection(url, dbProperties);
         } catch (SQLException throwables) {
