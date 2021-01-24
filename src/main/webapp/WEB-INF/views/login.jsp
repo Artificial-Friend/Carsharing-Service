@@ -3,19 +3,7 @@
 <head>
 
     <title>Login</title>
-    <style><%@include file="/WEB-INF/views/css/login.css"%>
-    h1 {
-        text-align: center;
-    }
-
-    p {
-        text-align: center;
-    }
-
-    h4 {
-        text-align: center;
-    }
-    </style>
+    <style><%@include file="/WEB-INF/views/css/login.css"%></style>
 
 </head>
 <div class="login">
