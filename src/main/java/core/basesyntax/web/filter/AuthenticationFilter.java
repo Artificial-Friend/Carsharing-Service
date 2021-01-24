@@ -3,6 +3,7 @@ package core.basesyntax.web.filter;
 import core.basesyntax.lib.Injector;
 import core.basesyntax.service.DriverService;
 import java.io.IOException;
+import java.util.NoSuchElementException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -34,6 +35,14 @@ public class AuthenticationFilter implements Filter {
         }
         Long id = (Long) req.getSession().getAttribute(DRIVER_ID);
         if (id == null) {
+            req.setAttribute("errorMsg", "Access denied! Log in or register to get access");
+            resp.sendRedirect("/login");
+            return;
+        }
+        try {
+            driverService.get(id);
+        } catch (NoSuchElementException e) {
+            req.setAttribute("errorMsg", "Access denied! Log in or register to get access");
             resp.sendRedirect("/login");
             return;
         }
