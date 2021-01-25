@@ -3,7 +3,9 @@ package core.basesyntax.web.filter;
 import core.basesyntax.lib.Injector;
 import core.basesyntax.service.DriverService;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.NoSuchElementException;
+import java.util.Set;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -18,9 +20,12 @@ public class AuthenticationFilter implements Filter {
     private static final Injector injector = Injector.getInstance("core.basesyntax");
     private final DriverService driverService
             = (DriverService) injector.getInstance(DriverService.class);
+    private final Set<String> links = new HashSet<>();
 
     @Override
     public void init(FilterConfig filterConfig) {
+        links.add("/login");
+        links.add("/drivers/add");
     }
 
     @Override
@@ -29,21 +34,21 @@ public class AuthenticationFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
         String url = req.getServletPath();
-        if (url.equals("/login") || url.equals("/drivers/add")) {
+        if (links.contains(url)) {
             chain.doFilter(req, resp);
             return;
         }
         Long id = (Long) req.getSession().getAttribute(DRIVER_ID);
         if (id == null) {
             req.setAttribute("errorMsg", "Access denied! Log in or register to get access");
-            resp.sendRedirect("/login");
+            req.getRequestDispatcher("WEB-INF/views/login.jsp").forward(req, resp);
             return;
         }
         try {
             driverService.get(id);
         } catch (NoSuchElementException e) {
             req.setAttribute("errorMsg", "Access denied! Log in or register to get access");
-            resp.sendRedirect("/login");
+            req.getRequestDispatcher("WEB-INF/views/login.jsp").forward(req, resp);
             return;
         }
         chain.doFilter(req, resp);

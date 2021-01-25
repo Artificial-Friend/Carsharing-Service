@@ -58,14 +58,20 @@ public class DaoJdbcDriverImpl implements DaoDriver {
 
     @Override
     public List<Driver> getAll() {
-        String query = "SELECT id, name, license_number, login, password FROM drivers "
+        String query = "SELECT id, name, license_number, login FROM drivers "
                 + "WHERE deleted = false ORDER BY id";
         try (Connection connection = ConnectionUtil.getConnection();
                 PreparedStatement statement = connection.prepareStatement(query)) {
             ResultSet resultSet = statement.executeQuery();
             List<Driver> drivers = new ArrayList<>();
             while (resultSet.next()) {
-                drivers.add(DaoUtils.parseDriver(resultSet));
+                Long id = resultSet.getObject("id", Long.class);
+                String name = resultSet.getObject("name", String.class);
+                String login = resultSet.getObject("login", String.class);
+                String licenseNumber = resultSet.getObject("license_number", String.class);
+                Driver driver = new Driver(name, licenseNumber, login, null);
+                driver.setId(id);
+                drivers.add(driver);
             }
             return drivers;
         } catch (SQLException throwables) {

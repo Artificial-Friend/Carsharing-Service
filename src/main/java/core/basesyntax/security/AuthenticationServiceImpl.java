@@ -1,5 +1,6 @@
 package core.basesyntax.security;
 
+import java.util.Optional;
 import core.basesyntax.exception.AuthenticationException;
 import core.basesyntax.lib.Inject;
 import core.basesyntax.lib.Service;
@@ -14,10 +15,9 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public Driver login(String login, String password) throws AuthenticationException {
-        Driver userFromDB = driverService.findByLogin(login).orElseThrow(
-                () -> (new AuthenticationException("Invalid login or password")));
-        if (userFromDB.getPassword().equals(password)) {
-            return userFromDB;
+        Optional<Driver> driverFromDB = driverService.findByLogin(login);
+        if (driverFromDB.isPresent() && driverFromDB.get().getPassword().equals(password)) {
+            return driverFromDB.get();
         }
         throw new AuthenticationException("Invalid login or password");
     }
