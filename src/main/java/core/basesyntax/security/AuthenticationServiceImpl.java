@@ -1,11 +1,11 @@
 package core.basesyntax.security;
 
-import java.util.Optional;
 import core.basesyntax.exception.AuthenticationException;
 import core.basesyntax.lib.Inject;
 import core.basesyntax.lib.Service;
 import core.basesyntax.model.Driver;
 import core.basesyntax.service.DriverService;
+import java.util.Optional;
 
 @SuppressWarnings("unused")
 @Service
