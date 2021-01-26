@@ -34,7 +34,7 @@ public class AuthenticationFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
         String url = req.getServletPath();
-        if (links.contains(url)) {
+        if (allowedUrls.contains(url)) {
             chain.doFilter(req, resp);
             return;
         }
