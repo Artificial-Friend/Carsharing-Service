@@ -20,7 +20,7 @@ public class AuthenticationFilter implements Filter {
     private static final Injector injector = Injector.getInstance("core.basesyntax");
     private final DriverService driverService
             = (DriverService) injector.getInstance(DriverService.class);
-    private final Set<String> links = new HashSet<>();
+    private final Set<String> allowedUrls = new HashSet<>();
 
     @Override
     public void init(FilterConfig filterConfig) {
