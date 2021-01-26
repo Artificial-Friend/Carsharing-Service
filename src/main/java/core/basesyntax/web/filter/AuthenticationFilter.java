@@ -25,7 +25,7 @@ public class AuthenticationFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) {
         links.add("/login");
-        links.add("/drivers/add");
+        allowedUrls.add("/drivers/add");
     }
 
     @Override
