@@ -7,6 +7,7 @@ import core.basesyntax.model.Manufacturer;
 import core.basesyntax.service.ManufacturerService;
 import java.util.List;
 
+@SuppressWarnings("unused")
 @Service
 public class ManufacturerServiceImpl implements ManufacturerService {
     @Inject

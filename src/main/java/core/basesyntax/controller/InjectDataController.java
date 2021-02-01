@@ -45,11 +45,11 @@ public class InjectDataController extends HttpServlet {
         carService.create(car3);
         carService.create(car4);
         carService.create(car5);
-        Driver driver1 = new Driver("Bob", "abc");
-        Driver driver2 = new Driver("Alice", "def");
-        Driver driver3 = new Driver("John", "ghi");
-        Driver driver4 = new Driver("Bruce", "jkl");
-        Driver driver5 = new Driver("Max", "mno");
+        Driver driver1 = new Driver("Bob", "abc", "login1", "passowrd1");
+        Driver driver2 = new Driver("Alice", "def", "login2", "passowrd2");
+        Driver driver3 = new Driver("John", "ghi", "login3", "passowrd3");
+        Driver driver4 = new Driver("Bruce", "jkl", "login4", "passowrd4");
+        Driver driver5 = new Driver("Max", "mno", "login5", "passowrd5");
         driverService.create(driver1);
         driverService.create(driver2);
         driverService.create(driver3);

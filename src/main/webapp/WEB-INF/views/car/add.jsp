@@ -2,6 +2,10 @@
 <html>
 <head>
     <title>Adding Driver</title>
+    <style>
+        h1 {text-align: center;}
+        p {text-align: center;}
+    </style>
 </head>
 <body>
 <h1>Provide your name and license number</h1>
@@ -11,7 +15,12 @@
     <br>
     Car's manufacturer id: <input required type="number" name="manufacturer_id">
     <br>
-    <button type="submit">add</button>
+    <button type="submit">Add</button>
+    <p>
+        <a href="${pageContext.request.contextPath}/">
+            Return to the main page
+        </a>
+    </p>
 </form>
 </body>
 </html>

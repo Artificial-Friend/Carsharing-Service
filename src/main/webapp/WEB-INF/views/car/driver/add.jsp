@@ -11,7 +11,12 @@
     <br>
     Car's id: <input required type="number" name="car_id">
     <br>
-    <button type="submit">add</button>
+    <button type="submit">Add</button>
+    <p>
+        <a href="${pageContext.request.contextPath}/">
+            Return to the main page
+        </a>
+    </p>
 </form>
 </body>
 </html>
