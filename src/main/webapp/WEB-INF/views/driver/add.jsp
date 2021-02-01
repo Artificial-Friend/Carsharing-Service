@@ -6,7 +6,8 @@
     <style>
         <%@include file="/WEB-INF/views/css/driverAdd.css"%>
         body {
-            background-image: url('https://mirkinohd.ru/uploads/thumbs/256427bc0-1.jpg');
+            /*background-image: url('https://mirkinohd.ru/uploads/thumbs/256427bc0-1.jpg');*/
+            background-color: dimgrey;
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: 100% 100%;
