@@ -1,4 +1,4 @@
-# jv-dao-annotation
+# Carshring Service
 Implemented:
 -   registration and login
 -   unique session for every user
